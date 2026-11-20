@@ -1,0 +1,15 @@
+name: scene_supervised_l200
+seed: 0
+data_root: data/UIEB
+architecture: scene_color_unet
+width: 12
+crop: 96
+batch: 4
+lr: 0.001
+iters: 1100
+ema: 0.985
+cpu_threads: 6
+log_every: 100
+val_every: 200
+semi: false
+rampup_frac: 0.25

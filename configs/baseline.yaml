@@ -1,0 +1,23 @@
+name: baseline
+seed: 0
+data_root: data/UIEB
+# model / optimisation (identical for every method)
+width: 32
+crop: 128
+batch: 4
+lr: 2.0e-4
+iters: 8000
+ema: 0.996
+log_every: 100
+val_every: 500
+# semi-supervised (Semi-UIR)
+semi: true
+bank_size: 256
+consistency: 0.2
+rampup_frac: 0.4
+bank_mode: image      # image = original Semi-UIR bank, pixel = UA-Bank
+# [UA-Bank]
+tta: false
+tta_k: 4
+weighted: false
+reject_q: 0.2       # pixel bank: fraction of most-uncertain teacher pixels not written

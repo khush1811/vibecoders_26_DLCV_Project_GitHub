@@ -1,0 +1,19 @@
+name: scene_finetune_l50
+seed: 0
+data_root: data/UIEB/L50
+architecture: scene_color_unet
+width: 12
+crop: 96
+scene_size: [128, 176]
+batch: 4
+lr: 0.00035
+iters: 360
+ema: 0.985
+cpu_threads: 6
+log_every: 60
+val_every: 120
+semi: false
+rampup_frac: 0.25
+tone_augmentation: 0.08
+exposure_weight: 0.25
+log_mse_weight: 0.015

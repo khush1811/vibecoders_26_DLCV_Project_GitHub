@@ -1,0 +1,17 @@
+name: scene_castmix_l50
+seed: 0
+data_root: data/UIEB/L50
+architecture: scene_color_unet
+width: 12
+crop: 96
+scene_size: [112, 152]
+batch: 4
+lr: 0.00085
+iters: 650
+ema: 0.985
+cpu_threads: 6
+log_every: 100
+val_every: 200
+semi: false
+rampup_frac: 0.25
+cast_mix_probability: 0.35
