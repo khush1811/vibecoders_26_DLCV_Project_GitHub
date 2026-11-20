@@ -104,7 +104,7 @@ python -m pip install torch==2.5.1 torchvision==0.20.1 --index-url https://downl
 
 ## Dataset Preparation
 
-The preparation script downloads UIEB, converts the images to RGB PNGs, and resizes each image so that its shorter side is 256 pixels while preserving its aspect ratio. Run the first command for the main 200-label benchmark. The second command derives the 50-label split used in the earlier experiments. [UIEB project](https://li-chongyi.github.io/proj_benchmark.html) · [Dataset download mirror](https://huggingface.co/datasets/Hikari0608/UIEB)
+The preparation script downloads UIEB, converts the images to RGB PNGs, and resizes each image so that its shorter side is 256 pixels while preserving its aspect ratio. Run the first command for the main 200-label benchmark. Second command derives the 50-label split used in the earlier experiments. [UIEB project](https://li-chongyi.github.io/proj_benchmark.html) · [Dataset download mirror](https://huggingface.co/datasets/Hikari0608/UIEB)
 
 ```sh
 python data/prepare_uieb.py --root data/UIEB --n_labeled 200 --short 256
