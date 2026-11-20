@@ -157,7 +157,7 @@ def stats(_):
     print("\n".join(lines))
 
 
-@torch.no_grad()
+@torch.no_grad()   # Directly to eval.py
 def uncsource(args):
     """Which perturbation family gives an uncertainty that predicts pseudo-label error?
     Evaluated on LABELED TRAINING images (not the test set) with the given teacher."""
