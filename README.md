@@ -8,6 +8,30 @@ Underwater photos often have a blue or green cast and lose contrast. Paired refe
 
 [Original Semi-UIR paper (Huang et al., CVPR 2023)](https://arxiv.org/abs/2303.09101) · [Official implementation](https://github.com/Huang-ShiRui/Semi-UIR)
 
+## Key Contributions
+
+- **Uncertainty-aware pseudo-labeling:** Extended the Semi-UIR reliable-bank approach by investigating teacher prediction variability under spatial and color perturbations, preserving uncertain regions of existing bank entries and reducing their influence during training.
+- **Fidelity-calibrated pseudo-label selection:** Developed a patch-level error estimator trained on labeled examples to guide bank updates and weight unlabeled training losses.
+- **Whole-scene restoration architecture:** Designed a lightweight two-stage network combining global color correction with local residual U-Net refinement.
+- **Efficiency-focused evaluation:** Achieved 22.69 dB PSNR and 0.9007 SSIM on the UIEB test set with approximately 288K parameters, outperforming our reproduced Semi-UIR baseline while using about 86% fewer parameters.
+
+## Key Results at a Glance
+
+| Metric | Semi-UIR Reproduction | Final Model |
+|---|---:|---:|
+| PSNR ↑ | 19.57 dB | **22.69 dB** |
+| SSIM ↑ | 0.8709 | **0.9007** |
+| Parameters ↓ | 2.013M | **0.288M** |
+| CPU Inference ↓ | 209.3 ms | **81.2 ms** |
+
+**Highlights**
+- +3.12 dB improvement in PSNR
+- +0.0298 improvement in SSIM
+- Approximately 86% fewer parameters
+- Approximately 2.58× faster CPU inference
+
+All results are based on the same 90-image UIEB test set. The final supervised model uses 200 labeled pairs; the reproduced Semi-UIR baseline uses 200 labeled pairs and 600 unlabeled images.
+
 ## How We Developed the Project
 
 **Semi-UIR reproduction.** An exponential-moving-average teacher restores unlabeled images. A reliable bank keeps one candidate restoration per image as a training target, also called a pseudo-label. The student learns from the stored target, and a contrastive loss pulls its output away from the degraded input. The original implementation uses AIM-Net and MUSIQ. For our reproduction, we used a width-32 residual U-Net and UIQM, an underwater image quality score that can be computed without a reference.
@@ -46,6 +70,14 @@ The final model also scored **3.7410 UIQM** and **0.3737 UCIQE**, two underwater
 ![Paired SSIM changes and a UIEB example showing the raw input, reproduced Semi-UIR, our fine-tuned output, and the reference](results/figures/report_latest_strip.png)
 
 *The plot shows per-image SSIM changes against our archived 50-label model. The example on the right is UIEB image `0005.png`.*
+
+## Future Work
+
+- **Architecture ablation:** Quantify the individual contributions of global color correction, percentile-stretched input, and residual refinement.
+- **Cross-dataset validation:** Evaluate restoration quality on additional underwater datasets and real-world imagery.
+- **Improved confidence estimation:** Explore pseudo-label selection methods that more accurately predict restoration error.
+- **Model optimization:** Investigate quantization, ONNX export, and deployment on edge devices.
+- **Perceptual evaluation:** Study whether improvements in PSNR and SSIM consistently correspond to human-perceived image quality.
 
 ## Environment and Dependencies
 
