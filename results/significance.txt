@@ -1,0 +1,6 @@
+baseline     vs supervised      -0.117 dB  win  52%  Wilcoxon p=0.801
+ours         vs baseline        +0.020 dB  win  59%  Wilcoxon p=0.193
+ours_color   vs baseline        +0.051 dB  win  58%  Wilcoxon p=0.185
+baseline_l50 vs supervised_l50  +0.181 dB  win  58%  Wilcoxon p=0.015
+ours_l50     vs baseline_l50    -0.116 dB  win  44%  Wilcoxon p=0.106
+ours_l50     vs supervised_l50  +0.065 dB  win  58%  Wilcoxon p=0.066
